@@ -102,3 +102,13 @@ export type gameActions = {
 };
 
 export type gameStore = sharedGameState & privatePayload & {actions: gameActions};
+
+export type Tool = "brush" | "bucket";
+
+export type WorkerInput = {
+	coords: {X: number, Y: number}
+    color: {r: number, g: number, b: number}
+    canvasHeight: number
+    canvasWidth: number
+    colorLayer: ArrayBufferLike
+}

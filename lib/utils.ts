@@ -28,3 +28,19 @@ export function canvasStrokes (payload: DrawEventPayload, engineRef: React.RefOb
         engineRef.current?.clear();
   }
 }
+
+export function hexToRgb(hex: string) {
+  // Remove the hash if it exists
+  let cleanHex = hex.replace('#', '');
+
+  // If shorthand notation (e.g., "F00"), expand it to 6 digits ("FF0000")
+  if (cleanHex.length === 3)
+    cleanHex = cleanHex.split('').map(char => char + char).join('');
+
+  // Parse the hex pairs into Base-10 integers
+  const r = parseInt(cleanHex.substring(0, 2), 16);
+  const g = parseInt(cleanHex.substring(2, 4), 16);
+  const b = parseInt(cleanHex.substring(4, 6), 16);
+
+  return {r, g, b};
+}
